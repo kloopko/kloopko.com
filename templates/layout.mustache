@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html class="no-js">
+<head lang="en">
+<meta charset="utf-8">
+<title>{{title}}</title>
+<link type="text/css" rel="stylesheet" href="/assets/css/screen.css" media="screen" />
+<link type="text/css" rel="stylesheet" href="/assets/css/app.css" media="screen" />
+<link href="/assets/img/favicon.png" rel="shortcut icon"/>
+{{#redirect_url}}
+<meta http-equiv="refresh" content="{{redirect_timeout}};{{redirect_url}}" />{{/redirect_url}}
+{{#head_js}}
+<script src="{{src}}" type="text/javascript"></script>{{/head_js}}
+<link type="text/plain" rel="author" href="/humans.txt">
+<meta name="description" content="{{description}}">
+<meta name="robots" content="index, follow">
+<meta name="google-site-verification" content="ryh5EEpGDLvgr59o9XYQQHsvheqIYME7ks2mKmeUANk" />
+</head>
+<body>
+	<div class="container" id="main_container">
+		<header id="header">
+			<ul id="main_menu">
+				{{#menu_links}}
+				<li>
+					<a class="{{class}}" href="{{href}}">{{text}}</a>
+				</li>
+				{{/menu_links}}
+			</ul>		
+			<a href="/" id="header_logo">
+				<img src="/assets/img/header_logo.png" alt="Kloopko - We build awesome Kohana apps" width="543" height="174" />
+			</a>
+			<h1>{{{headline}}}</h1>
+			{{#subtitle}}
+			<h2 class="subtitle">{{subtitle}}</h2>
+			{{/subtitle}}
+		</header>
+		<div id="content">
+			{{>content}}
+		</div>
+	</div>		
+	<footer>
+		<div class="container">
+			<address class="left">
+				<a href="/about/klupko" style="color:#fff;text-decoration:none;">
+					<strong>Klupko</strong>
+				</a>
+				<br />
+				Sarajevo, Bosnia &amp; Herzegovina
+				<br />
+				<br />
+				{{{contact_mailto}}}
+			</address>
+			<span class="right" style="text-align:right;">
+				Copyright Kloopko Team {{year}}. All Rights Reserved.
+				<br />
+				Follow us on:
+				<a href="http://twitter.com/kloopko">Twitter</a> | 
+				<a href="http://www.facebook.com/kloopko">Facebook</a> |
+				<a href="http://www.github.com/kloopko">GitHub
+			</span>
+		</div>
+	</footer>
+{{{analytics}}}
+</body>
+</html>
