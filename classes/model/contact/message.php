@@ -39,9 +39,10 @@ class Model_Contact_Message extends ORM {
 		$this->ip = Request::$client_ip;
 		
 		parent::create($validation);
-				
+			
+		// Yeah, mailer should be doing this	
 		try
-		{
+		{	
 			$headers = new HTTP_Header(array(
 				'Content-Type'	=> 'text/plain; charset='.Kohana::$charset,
 				'MIME-Version'	=> '1.0',

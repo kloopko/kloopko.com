@@ -31,7 +31,7 @@ return array(
 	),
 	
 	'keywords' => array(
-		'default' => 'klupko, kloopko, kohana consulting, kohana framework consulting, kohana web development, kohana development team, web agencija sarajevo, web sarajevo, web dizajn sarajevo, web development sarajevo',
+		'default' => 'klupko, kloopko, kohana consulting, kohana framework consulting, kohana web development, kohana development team, web sarajevo, web dizajn sarajevo, web development sarajevo,  web agencija sarajevo',
 	),
 	
 	'title' => array(

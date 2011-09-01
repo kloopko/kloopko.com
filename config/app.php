@@ -3,7 +3,7 @@
 return array(
 
 	'cookie' => array(
-		'salt' => '87sdsd987dASdSa',
+		'salt' => 'k0h4n4FTW',
 	),
 
 	'emails' => array(
