@@ -1,5 +1,7 @@
 <?php defined('SYSPATH') or die('No direct script access.');
-
+/**
+ * Handles all global application events: response logics, ACL, etc.
+ */
 class Controller extends Kohana_Controller {
 	
 	/**

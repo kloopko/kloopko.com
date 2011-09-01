@@ -43,8 +43,8 @@ class Arr extends Kohana_Arr {
 	 * Returns the value if it exists in the passed array
 	 * Usage example:
 	 *
-	 * 		// Set the passed value if it's valid
-	 * 		$lang = Arr::set($langs, $this->request->param('lang'), 'en');
+	 * 		// Get the passed value if it's valid
+	 * 		$lang = Arr::value($langs, $this->request->param('lang'), 'en');
 	 * 		
 	 * 		// Use this value to set I18n language
 	 *		I18n::lang($lang);
@@ -52,16 +52,16 @@ class Arr extends Kohana_Arr {
 	 * @param	array	Array of allowed values
 	 * @param	mixed	Value to validate and set
 	 * @param	mixed	Default value to set in case validation fails
-	 * @return	mixed	Set value
+	 * @param	bool	Strict value comparation?
+	 * @return	mixed	Valid value
 	 */
-	public static function set(array $allowed, $value, $default = NULL)
+	public static function value(array $allowed, $value, $default = NULL, $strict = FALSE)
 	{
-		return in_array($value, $allowed) ? $value : $default;
+		return in_array($value, $allowed, $strict) ? $value : $default;
 	}
 
 	/** 
-	 * Extracts values to an array with numeric keys 
-	 * Useful with `list()`:
+	 * Extracts values to an array with numeric keys. Useful with `list()`:
 	 * 		
 	 * 		list($id, $seo) = Arr::values($params, array('id','seo'));
 	 *
