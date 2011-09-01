@@ -1,5 +1,7 @@
 <?php defined('SYSPATH') or die('No direct script access.');
-
+/**
+ * Extend this controller to enabled HTTP caching
+ */ 
 class Controller_Cachable extends Controller {
 
 	/**
@@ -7,7 +9,7 @@ class Controller_Cachable extends Controller {
 	 */
 	protected $_cache_lifetime;
 	
-	public function action_before()
+	public function before()
 	{
 		parent::before();
 		
