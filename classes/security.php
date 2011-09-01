@@ -6,6 +6,7 @@ class Security extends Kohana_Security {
 
 	/**
 	 * Logs the timed action to session
+	 *
 	 * @param	string	action
 	 * @return	void
 	 */
