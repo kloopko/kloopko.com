@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html class="no-js">
-<head lang="en">
-<meta charset="utf-8">
+<head lang="{{lang}}">
+<meta charset="{{charset}}">
 <title>{{title}}</title>
 <link type="text/css" rel="stylesheet" href="/assets/css/screen.css" media="screen" />
 <link type="text/css" rel="stylesheet" href="/assets/css/app.css" media="screen" />
@@ -16,8 +16,8 @@
 <meta name="google-site-verification" content="ryh5EEpGDLvgr59o9XYQQHsvheqIYME7ks2mKmeUANk" />
 </head>
 <body>
-	<div class="container" id="main_container">
-		<header id="header">
+	<header id="header">
+		<div class="container">
 			<ul id="main_menu">
 				{{#menu_links}}
 				<li>
@@ -32,11 +32,11 @@
 			{{#subtitle}}
 			<h2 class="subtitle">{{subtitle}}</h2>
 			{{/subtitle}}
-		</header>
-		<div id="content">
-			{{>content}}
 		</div>
-	</div>		
+	</header>
+	<div class="container" id="content">
+		{{>content}}
+	</div>	
 	<footer>
 		<div class="container">
 			<address class="left">
@@ -55,7 +55,7 @@
 				Follow us on:
 				<a href="http://twitter.com/kloopko">Twitter</a> | 
 				<a href="http://www.facebook.com/kloopko">Facebook</a> |
-				<a href="http://www.github.com/kloopko">GitHub
+				<a href="http://www.github.com/kloopko">GitHub</a>
 			</span>
 		</div>
 	</footer>
