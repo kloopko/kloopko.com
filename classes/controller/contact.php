@@ -19,13 +19,13 @@ class Controller_Contact extends Controller_Cachable {
 			{
 				$message->create($external);
 				
-				// Log this action to prevent abuse
-				Security::log('contact us');
-				
 				// Save contact infos to session for later usage
 				$contact_info = Arr::extract($this->request->post(), array('name', 'email'));
 				
 				Cookie::set('contact_info', json_encode($contact_info), Date::MONTH);
+				
+				// Log this action to prevent abuse
+				Security::log('contact us');
 				
 				// Finally, redirect to the success page
 				$this->request->redirect('contact/success');
@@ -39,7 +39,7 @@ class Controller_Contact extends Controller_Cachable {
 		
 		$info = json_decode(Cookie::get('contact_info', '{}'), TRUE);
 		
-		$this->view->values = array_merge($info, $message->as_array());
+		$this->view->values = array_merge($message->as_array(), $info);
 	}
 	
 	public function action_success()
