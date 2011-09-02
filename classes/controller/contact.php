@@ -38,9 +38,8 @@ class Controller_Contact extends Controller_Cachable {
 		}
 		
 		$info = json_decode(Cookie::get('contact_info', '{}'), TRUE);
-
-		$this->view->contact_info = $info;
-		$this->view->values = $message->as_array();
+		
+		$this->view->values = array_merge($info, $message->as_array());
 	}
 	
 	public function action_success()

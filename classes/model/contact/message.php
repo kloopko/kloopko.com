@@ -26,6 +26,7 @@ class Model_Contact_Message extends ORM {
 			'email' => array(
 				array('not_empty'),
 				array('email'),
+				array('email_domain'),
 			),
 			'content' => array(
 				array('not_empty'),
