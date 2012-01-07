@@ -8,6 +8,8 @@ class View_Layout extends Kohana_Kostache_Layout {
 
 	public $keywords = array();
 	
+	public $title;
+	
 	/**
 	 * Returns the Google Analytics embed
 	 * @note	Works only in production
@@ -142,29 +144,24 @@ class View_Layout extends Kohana_Kostache_Layout {
 		
 		return array(
 			array(
-				'text' 	=> 'Home',
-				'class'	=> ($c === 'index') ? 'selected' : '',
-				'href' 	=> Route::url('default'),
+				'text' 	=> 'Blog',
+				'selected'	=> ($c === 'blog'),
+				'href' 	=> Route::url('default', array('controller' => 'blog')),
 			),
 			array(
 				'text' 	=> 'Work',
-				'class'	=> ($c === 'work') ? 'selected' : '',
+				'selected'	=> ($c === 'work'),
 				'href' 	=> Route::url('default', array('controller' => 'work')),
 			),
 			array(
 				'text' 	=> 'Services',
-				'class'	=> ($c === 'services') ? 'selected' : '',
+				'selected'	=> ($c === 'services'),
 				'href' 	=> Route::url('default', array('controller' => 'services')),
 			),
 			array(
 				'text' 	=> 'About',
-				'class'	=> ($c === 'about') ? 'selected' : '',
+				'selected'	=> ($c === 'about'),
 				'href' 	=> Route::url('default', array('controller' => 'about')),
-			),
-			array(
-				'text' 	=> 'Contact',
-				'class'	=> ($c === 'contact') ? 'selected' : '',
-				'href' 	=> Route::url('default', array('controller' => 'contact')),
 			),
 		);
 	}
@@ -217,6 +214,14 @@ class View_Layout extends Kohana_Kostache_Layout {
 	}
 	
 	/**
+	 * Header submenu
+	 */
+	public function submenu()
+	{
+		
+	}
+	
+	/**
 	 * Subtitle
 	 */
 	public function subtitle()
@@ -229,7 +234,7 @@ class View_Layout extends Kohana_Kostache_Layout {
 	 */
 	public function title()
 	{
-		return Kohana::$config->load('layout.title.default');
+		return $this->title ?: Kohana::$config->load('layout.title.default');
 	}
 	
 	/**

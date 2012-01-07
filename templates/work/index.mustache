@@ -1,16 +1,18 @@
-<h2>Projects we worked on</h2>
-<div class="clearfix">
-	{{#projects}}
-	<div class="span-6 {{class}}">
-		{{#image_url}}
-		<img src="{{image_url}}" alt="{{name}}" />
-		{{/image_url}}
-		<a href="{{url}}">{{name}}</a>
+<div class="boxed">
+	<h2>Projects we worked on</h2>
+	<div class="padded">
+		{{#projects}}
+		<div class="span-6 {{class}}">
+			{{#image_url}}
+			<img src="{{image_url}}" alt="{{name}}" />
+			{{/image_url}}
+			<a href="{{url}}">{{name}}</a>
+		</div>
+		{{/projects}}
+		{{^projects}}
+		<p class="text">
+		We're currently picking some of the projects we worked on, please visit us back soon!
+		</p>
+		{{/projects}}
 	</div>
-	{{/projects}}
-	{{^projects}}
-	<p class="text">
-	We're currently picking some of the projects we worked on, please visit us back soon!
-	</p>
-	{{/projects}}
 </div>

@@ -2,12 +2,6 @@
 
 return array(
 
-	'cache' => array(
-		'defaults' => array(
-			'lifetime' => Date::DAY,
-		),
-	),
-
 	'cookie' => array(
 		'salt' => 'k0h4n4FTW',
 	),

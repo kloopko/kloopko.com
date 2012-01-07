@@ -4,7 +4,7 @@ class Controller_Work extends Controller_Cachable {
 
 	public function action_index()
 	{
-		$this->view->projects = ORM::factory('project')->find_all();
+		
 	}
 
 }

@@ -17,6 +17,15 @@ class Model_Contact_Message extends ORM {
 		);
 	}
 	
+	public function labels()
+	{
+		return array(
+			'content' 	=> 'Message',
+			'email'		=> 'Your e-mail',
+			'name'		=> 'Your name',
+		);
+	}
+	
 	public function rules()
 	{
 		return array(
@@ -26,7 +35,7 @@ class Model_Contact_Message extends ORM {
 			'email' => array(
 				array('not_empty'),
 				array('email'),
-				array('email_domain'),
+				#array('email_domain'),
 			),
 			'content' => array(
 				array('not_empty'),
@@ -37,25 +46,27 @@ class Model_Contact_Message extends ORM {
 	
 	public function create(Validation $validation = NULL)
 	{
+		// Assign current visitors' IP
 		$this->ip = Request::$client_ip;
 		
 		parent::create($validation);
 			
 		// Yeah, mailer should be doing this	
 		try
-		{	
+		{
 			$headers = new HTTP_Header(array(
 				'Content-Type'	=> 'text/plain; charset='.Kohana::$charset,
 				'MIME-Version'	=> '1.0',
+				'From'			=> "{$this->name} <{$this->email}>",
 				'Reply-To' 		=> $this->email,
 				'X-Mailer'		=> 'PHP/'.phpversion(),
 			));
 			
-			mail('contact@kloopko.com', $this->name.' - Kloopko Contact', $this->content, (string) $headers);
+			mail('contact@kloopko.com', 'Kloopko Contact', $this->content, $headers);
 		}
 		catch (Exception $e)
 		{
-			Kohana::$log->add(Log::EMERGENCY, 'Failed to send email: :message (ID: :id', 
+			Kohana::$log->add(Log::EMERGENCY, 'Failed to send contact message #:id: :message', 
 				array(':message' => $e->getMessage(), ':id' => $this->id));
 		}
 	}

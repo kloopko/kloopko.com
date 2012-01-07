@@ -19,11 +19,6 @@ class Controller_Contact extends Controller_Cachable {
 			{
 				$message->create($external);
 				
-				// Save contact infos to session for later usage
-				$contact_info = Arr::extract($this->request->post(), array('name', 'email'));
-				
-				Cookie::set('contact_info', json_encode($contact_info), Date::MONTH);
-				
 				// Log this action to prevent abuse
 				Security::log('contact us');
 				
@@ -32,8 +27,10 @@ class Controller_Contact extends Controller_Cachable {
 			}
 			catch (ORM_Validation_Exception $e)
 			{
-				$this->view->errors = $e->errors('');
-				$this->view->errors += Arr::remove($this->view->errors, '_external', array());
+				$errors  = $e->errors('');
+				$errors += Arr::remove($errors, '_external', array());
+				
+				$this->view->errors = $errors;
 			}
 		}
 		

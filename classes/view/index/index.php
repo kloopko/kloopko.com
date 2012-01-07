@@ -4,7 +4,7 @@ class View_Index_Index extends View_Layout {
 
 	public $title = 'Kloopko - Web Design & Development';
 	
-	public function subtitle()
+	public function headline()
 	{
 		return 'Looking for an awesome website?';
 	}

@@ -5,17 +5,22 @@ class View_Work_Index extends View_Layout {
 	public $headline = 'Our work';
 	
 	/**
-	 * @var	Database_Result
+	 * @var	mixed	cache for self::projects()
 	 */
-	public $projects;
+	public $_projects;
 	
 	public function projects()
 	{
+		if ($this->_projects !== NULL)
+			return $this->_projects;
+		
+		$projects = ORM::factory('project')->find_all();
+		
 		$result = array();
 		
 		$i = 1;
 		
-		foreach ($this->projects as $project)
+		foreach ($projects as $project)
 		{
 			$push = $project->as_array();
 			

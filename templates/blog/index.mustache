@@ -1,0 +1,19 @@
+<section class="span-18">
+	<h4>Most recent posts</h4>
+	{{#posts}}
+	<article class="blog_post padded text" id="post_{{id}}">
+		<header>
+		<h2>
+			<a class="title" href="{{url}}">{{title}}</a>
+		</h2>
+		</header>	
+		{{short_text}}
+	</article>
+	{{/posts}}
+</section>
+
+<aside class="span-6 last right">
+	<div class="padded">
+		<a href="/blog/rss">RSS</a>
+	</div>
+</aside>

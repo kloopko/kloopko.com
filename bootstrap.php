@@ -82,9 +82,9 @@ if (isset($_SERVER['KOHANA_ENV']))
 Kohana::init(array(
 	'base_url'   	=> '/',
 	'index_file'	=> FALSE,
-	'caching'		=> Kohana::$environment  <  Kohana::DEVELOPMENT,
-	'errors'		=> Kohana::$environment  >  Kohana::PRODUCTION,
-	'profile'		=> Kohana::$environment  >  Kohana::PRODUCTION,
+	'caching'		=> (Kohana::$environment < Kohana::DEVELOPMENT),
+	'errors'		=> (Kohana::$environment > Kohana::PRODUCTION),
+	'profile'		=> (Kohana::$environment > Kohana::PRODUCTION),
 ));
 
 /**
@@ -101,20 +101,30 @@ Kohana::$config->attach(new Config_File);
  * Enable modules. Modules are referenced by a relative or absolute path.
  */
 Kohana::modules(array(
-	// 'auth'       => MODPATH.'auth',       // Basic authentication
-	'cache'      => MODPATH.'cache',      // Caching with multiple backends
-	// 'codebench'  => MODPATH.'codebench',  // Benchmarking tool
-	'database'   => MODPATH.'database',   // Database access
-	// 'image'      => MODPATH.'image',      // Image manipulation
-	'orm'        => MODPATH.'orm',        // Object Relationship Mapping
-	// 'unittest'   => MODPATH.'unittest',   // Unit testing
-	// 'userguide'  => MODPATH.'userguide',  // User guide and API documentation
+	'auth'			=> MODPATH.'auth',		// Basic authentication
+	'cache'			=> MODPATH.'cache',		// Caching with multiple backends
+	// 'codebench'	=> MODPATH.'codebench',	// Benchmarking tool
+	'database'		=> MODPATH.'database',	// Database access
+	// 'image'		=> MODPATH.'image',		// Image manipulation
+	'orm'			=> MODPATH.'orm',		// Object Relationship Mapping
+	// 'unittest'	=> MODPATH.'unittest',	// Unit testing
+	'userguide'		=> MODPATH.'userguide',	// User guide and API documentation
 	
-	'kostache' => MODPATH.'kostache',	// Kostache (Mustache for Kohana)
+	'pagination'	=> MODPATH.'pagination',// Pagination
+	'kostache'		=> MODPATH.'kostache',	// Kostache (Mustache for Kohana)
+	'kloopko-admin'	=> MODPATH.'kloopko-admin', // Kloopko Admin module
+	'formo'	=> MODPATH.'formo', // Kohana Formo module
+	
+	'firephp'		=> MODPATH.'firephp',
 ));
 
 /**
- * Set the cookie salt.
+ * Cache parameters
+ */
+Cache::$default = 'file';
+ 
+/**
+ * Cookie parameters
  */
 Cookie::$salt = Kohana::$config->load('app.cookie.salt');
 

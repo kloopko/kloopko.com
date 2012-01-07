@@ -1,6 +1,6 @@
 <?php defined('SYSPATH') or die('No direct script access.');
 
-class View_About_Klupko extends View_Layout {
+class View_About_Klupko extends View_About {
 
 	public $headline = 'Klupko ?';
 	

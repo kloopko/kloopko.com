@@ -16,47 +16,86 @@
 <meta name="google-site-verification" content="ryh5EEpGDLvgr59o9XYQQHsvheqIYME7ks2mKmeUANk" />
 </head>
 <body>
-	<header id="header">
-		<div class="container">
-			<ul id="main_menu">
-				{{#menu_links}}
-				<li>
-					<a class="{{class}}" href="{{href}}">{{text}}</a>
-				</li>
-				{{/menu_links}}
-			</ul>		
-			<a href="/" id="header_logo">
-				<img src="/assets/img/header_logo.png" alt="Kloopko - We build awesome Kohana apps" width="543" height="174" />
-			</a>
-			<h1>{{{headline}}}</h1>
-			{{#subtitle}}
-			<h2 class="subtitle">{{subtitle}}</h2>
-			{{/subtitle}}
-		</div>
-	</header>
-	<div class="container" id="content">
-		{{>content}}
-	</div>	
-	<footer>
-		<div class="container">
-			<address class="left">
-				<a href="/about/klupko" style="color:#fff;text-decoration:none;">
-					<strong>Klupko</strong>
+	<header id="header">	
+		<div class="inner">	
+			<div class="container">
+				<a class="logo" href="/">
+					<img src="/assets/img/logo.png" alt="kloopko - web design &amp; development" />
 				</a>
-				<br />
-				Sarajevo, Bosnia &amp; Herzegovina
-				<br />
-				<br />
-				{{{contact_mailto}}}
-			</address>
-			<span class="right" style="text-align:right;">
-				Copyright Kloopko Team {{year}}. All Rights Reserved.
-				<br />
-				Follow us on:
-				<a href="http://twitter.com/kloopko">Twitter</a> | 
-				<a href="http://www.facebook.com/kloopko">Facebook</a> |
-				<a href="http://www.github.com/kloopko">GitHub</a>
-			</span>
+				<nav>
+					<div class="span-13">
+						<ul id="main_menu">
+							{{#menu_links}}
+							<li>
+								<a class="{{#selected}}selected{{/selected}}" href="{{href}}">{{text}}</a>
+							</li>
+							{{/menu_links}}
+						</ul>
+						{{#submenu}}
+						<ul id="sub_menu">
+							{{#links}}
+							<li>
+								<a class="{{#selected}}selected{{/selected}}" href="{{href}}">{{text}}</a>
+							</li>
+							{{/links}}
+						</ul>
+						{{/submenu}}
+					</div>
+					<ul class="contact">
+						<li>
+							<a href="/contact">
+								<span>Contact us</span>
+							</a>
+						</li>
+					</ul>
+				</nav>
+			</div>
+		</div>
+		{{#headline}}
+		<div class="hgroup_wrapper">
+			<div class="inner">
+				<hgroup class="container">
+					<h1>{{{headline}}}</h1>
+					{{#subtitle}}
+					<h2>{{subtitle}}</h2>
+					{{/subtitle}}
+				</hgroup>
+			</div>
+		</div>
+		{{/headline}}
+	</header>
+	<section id="content">
+		<div class="inner">
+			<div class="container">
+			{{>content}}
+			</div>
+		</div>
+	</section>
+	<footer id="footer">
+		<div class="inner">
+			<div class="container">
+				<address class="left">
+					<a href="/about/klupko" style="color:#fff;text-decoration:none;">
+						<strong>Klupko</strong>
+					</a>
+					<br />
+					Sarajevo, Bosnia &amp; Herzegovina
+					<br />
+					<br />
+					<a href="/contact">Contact us</a>
+				</address>
+				<div class="right" style="text-align:right;">
+					Copyright Kloopko {{year}}.
+					<br />
+					All Rights Reserved.
+					<br />
+					<br />
+					Follow us:
+					<a href="http://twitter.com/kloopko" rel="nofollow">Twitter</a> &nbsp;
+					<a href="http://www.facebook.com/kloopko" rel="nofollow">Facebook</a> &nbsp;
+					<a href="http://www.github.com/kloopko" rel="nofollow">GitHub</a>
+				</div>
+			</div>
 		</div>
 	</footer>
 {{{analytics}}}

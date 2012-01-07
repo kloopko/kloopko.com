@@ -1,0 +1,31 @@
+<section class="boxed">
+
+	<h2>Our team</h2>
+
+	<div class="padded">
+	
+		<p class="text">
+			Our team is awesome, blabla!
+		</p>
+		
+	</div>
+	
+	{{#members}}
+	<article class="{{class}}">
+	
+		{{#avatar_url}}
+		<img src="{{avatar_url}}" alt="{{full_name}} picture" />
+		{{/avatar_url}}
+		
+		<header>
+			
+			<h2>
+				<a href="{{url}}">{{full_name}}</a>
+			</h2>
+			
+		</header>
+		
+	</article>
+	{{/members}}
+	
+</section>
