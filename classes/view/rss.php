@@ -8,6 +8,9 @@ abstract class View_Rss {
 
 	public $items;
 	
+	/**
+	 * What happens when object is casted to string?
+	 */
 	public function __toString()
 	{
 		try
@@ -16,7 +19,10 @@ abstract class View_Rss {
 		}
 		catch (Exception $e)
 		{
-			echo $e->getMessage();
+			Kohana::$log->add(Log::ERROR, 'Couldn`t render RSS: :message',
+				array(':message', $message = $e->getMessage()));
+				
+			echo $message;
 		}
 	}
 	
@@ -34,7 +40,7 @@ abstract class View_Rss {
 	{
 		return array(
 			'link' 	=> URL::site(),
-			'url' 	=> URL::site('assets/img/logo.png'),
+			'url' 	=> URL::site('media/img/logo.png'),
 			'title' => 'Kloopko',
 		);
 	}

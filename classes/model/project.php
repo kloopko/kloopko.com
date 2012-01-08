@@ -50,7 +50,7 @@ class Model_Project extends ORM {
 	 */
 	public function image_url()
 	{
-		return URL::site('assets/img/projects/'.$this->main_image->filename);
+		return URL::site('media/img/projects/'.$this->main_image->filename);
 	}
 	
 }

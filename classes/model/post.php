@@ -22,6 +22,7 @@ class Model_Post extends ORM {
 		
 		$this->text_html = Markdown($this->text);
 		
+		// If permalink hasn't been specified, generate it from the post title
 		if (empty($this->permalink))
 		{
 			$this->permalink = URL::title($this->title);
@@ -41,6 +42,7 @@ class Model_Post extends ORM {
 		}
 		
 		// Permalink can't be changed except right after publishing
+		// TODO: created a mechanism to 301 redirect from old links?
 		if (isset($this->_changed['permalink']))
 		{
 			if (time() - strtotime($this->datetime) > Date::HOUR)
@@ -55,7 +57,12 @@ class Model_Post extends ORM {
 	public function filters()
 	{
 		return array(
-			
+			'title' => array(
+				array('trim'),
+			),
+			'text' => array(
+				array('trim'),
+			),
 		);
 	}
 	
@@ -83,7 +90,7 @@ class Model_Post extends ORM {
 		);
 	}
 
-// -----------------------------------------------------------------------------
+// -- Custom methods -----------------------------------------------------------
 	
 	/**
 	 * Returns the URL to main project image
@@ -93,16 +100,21 @@ class Model_Post extends ORM {
 		return date('d.m.Y \a\t H:i', strtotime($this->datetime));
 	}
 	
+	/**
+	 * Returns the shortened version of *text* column value
+	 * 
+	 * @return	string
+	 */
 	public function short_text($chars = 300)
 	{
 		return Text::limit_chars($this->text, $chars);
 	}
 	
-	public function text_p()
-	{
-		return Text::auto_p($this->text);
-	}
-	
+	/**
+	 * Get the (reverse routed) relative URL to current post
+	 *
+	 * @return	string
+	 */
 	public function url()
 	{
 		return Route::url('post', array(

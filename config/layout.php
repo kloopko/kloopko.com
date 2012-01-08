@@ -5,7 +5,7 @@ return array(
 	'css'	=>	array(
 		'head' => array(
 			array(
-				'href'	=> URL::site('assets/all.css'),
+				'href'	=> URL::site('media/all.css'),
 				'media'	=> 'screen',
 			),
 		),
@@ -21,9 +21,9 @@ return array(
 	
 	'js' => array(
 		'head' => array(
-			array('src' => URL::site('assets/js/modernizr-1.7.min.js')),
+			array('src' => URL::site('media/js/modernizr-1.7.min.js')),
 			#array('src' => 'https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js'),
-			array('src' => URL::site('assets/js/app.js')),
+			array('src' => URL::site('media/js/app.js')),
 		),
 		'foot' => array(
 			

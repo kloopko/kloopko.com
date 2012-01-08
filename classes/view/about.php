@@ -4,7 +4,7 @@ abstract class View_About extends View_Layout {
 	
 	public function submenu()
 	{
-		$a = Request::current()->action();
+		$a = Request::$current->action();
 		
 		return array(
 			'links' => array(
